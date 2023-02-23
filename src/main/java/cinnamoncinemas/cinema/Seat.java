@@ -8,19 +8,14 @@ import javafx.scene.input.MouseButton;
 
 public class Seat {
 
-    private final int row;
-    private final int number;
-
     private ImageView imageView;
 
     private User user;
 
-    public static Image VACANT_SEAT = new Image("file:src/main/resources/chair.png");
-    public static Image ALLOCATED_SEAT = new Image("file:src/main/resources/chair2.png");
+    public static Image VACANT_SEAT = new Image(Main.RESOURCE_STUB + "chair.png");
+    public static Image ALLOCATED_SEAT = new Image(Main.RESOURCE_STUB + "chair2.png");
 
-    public Seat(int row, int number) {
-        this.row = row;
-        this.number = number;
+    public Seat() {
     }
 
     public User getUser() {return user;}
@@ -32,7 +27,6 @@ public class Seat {
                 Main.currentCinema.checkFull();
             }
             else if (event.getButton() == MouseButton.SECONDARY) {this.deallocate();}
-            System.out.println(this.row + "" + this.number);
         });
         this.imageView = imageView;
     }

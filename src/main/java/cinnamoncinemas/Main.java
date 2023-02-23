@@ -9,6 +9,8 @@ import javafx.stage.WindowEvent;
 
 public class Main extends Application {
 
+    public static String RESOURCE_STUB = "file:src/main/resources/";
+
     private static Stage stage;
     public static User currentUser;
     public static Cinema currentCinema;
