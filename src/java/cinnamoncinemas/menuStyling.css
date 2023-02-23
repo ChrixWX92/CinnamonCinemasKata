@@ -1,0 +1,4 @@
+.custom-slider .axis {
+    -fx-tick-label-font-size: 12px;
+    -fx-tick-label-font-family: monospace;
+}
