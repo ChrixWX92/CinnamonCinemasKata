@@ -1,4 +1,4 @@
-package cinnamoncinemas.theatre;
+package cinnamoncinemas.cinema;
 
 import cinnamoncinemas.Main;
 
@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Theatre {
+public class Cinema {
 
-    public List<List<Seat>> seats;
+    private final List<List<Seat>> seats;
 
-    public Theatre() {
+    public Cinema() {
         this.seats = generateSeats();
     }
 
@@ -28,17 +28,17 @@ public class Theatre {
     }
 
     public void allocateSeat() {
-            for (char row = 'C'; row >= 'A'; row--) {
-                for (int number = 0; number < 5; number++) {
-                    System.out.println(row + "" + number);
-                    Seat seat = seats.get(rowToIndex(row)).get(number);
-                    if (seat.getUser() == null) {
-                        seat.allocate(Main.currentUser);
-                        checkFull();
-                        return;
-                    }
+        for (char row = 'C'; row >= 'A'; row--) {
+            for (int number = 0; number < 5; number++) {
+                System.out.println(row + "" + number);
+                Seat seat = seats.get(rowToIndex(row)).get(number);
+                if (seat.getUser() == null) {
+                    seat.allocate(Main.currentUser);
+                    checkFull();
+                    return;
                 }
             }
+        }
     }
 
     public void checkFull() {
@@ -53,5 +53,8 @@ public class Theatre {
     }
 
     public static int rowToIndex(char row){return Character.toUpperCase(row) - 65;}
+
+
+    public List<List<Seat>> getSeats() {return seats;}
 
 }
