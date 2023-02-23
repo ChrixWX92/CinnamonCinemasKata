@@ -1,4 +1,4 @@
-package cinnamoncinemas.theatre;
+package cinnamoncinemas.cinema;
 
 import cinnamoncinemas.Main;
 import cinnamoncinemas.user.User;
@@ -8,8 +8,8 @@ import javafx.scene.input.MouseButton;
 
 public class Seat {
 
-    int row;
-    int number;
+    private final int row;
+    private final int number;
 
     private ImageView imageView;
 
@@ -25,13 +25,11 @@ public class Seat {
 
     public User getUser() {return user;}
 
-    public void setUser(User user) {this.user = user;}
-
     public void setImageView(ImageView imageView) {
         imageView.setOnMouseClicked(event -> {
             if (event.getButton() == MouseButton.PRIMARY) {
                 this.allocate(Main.currentUser);
-                Main.currentTheatre.checkFull();
+                Main.currentCinema.checkFull();
             }
             else if (event.getButton() == MouseButton.SECONDARY) {this.deallocate();}
             System.out.println(this.row + "" + this.number);
@@ -47,10 +45,6 @@ public class Seat {
     private void deallocate() {
         this.user = null;
         this.imageView.setImage(VACANT_SEAT);
-    }
-
-    public ImageView getImageView() {
-        return imageView;
     }
 
 }
