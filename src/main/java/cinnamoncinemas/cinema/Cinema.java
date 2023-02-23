@@ -19,7 +19,7 @@ public class Cinema {
         for (char row = 'A'; row <= 'C'; row++) {
             List<Seat> rowList = new ArrayList<>();
             for (int number = 0; number < 5; number++) {
-                rowList.add(new Seat(row, number));
+                rowList.add(new Seat());
             }
             seats.add(rowToIndex(row), rowList);
         }
@@ -30,7 +30,6 @@ public class Cinema {
     public void allocateSeat() {
         for (char row = 'C'; row >= 'A'; row--) {
             for (int number = 0; number < 5; number++) {
-                System.out.println(row + "" + number);
                 Seat seat = seats.get(rowToIndex(row)).get(number);
                 if (seat.getUser() == null) {
                     seat.allocate(Main.currentUser);
@@ -53,7 +52,6 @@ public class Cinema {
     }
 
     public static int rowToIndex(char row){return Character.toUpperCase(row) - 65;}
-
 
     public List<List<Seat>> getSeats() {return seats;}
 

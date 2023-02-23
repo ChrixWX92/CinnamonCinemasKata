@@ -25,6 +25,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
+import static cinnamoncinemas.Main.RESOURCE_STUB;
+
 public class GUI {
 
     public static final int WINDOW_X_SIZE = 1024;
@@ -64,6 +66,7 @@ public class GUI {
 
         this.cinema = cinema;
         this.stage = new Stage();
+        this.stage.getIcons().add(new Image(RESOURCE_STUB + "cinnamon.png"));
         this.init();
 
     }
@@ -130,10 +133,7 @@ public class GUI {
         specificButton = new Button("Allocate Specific Seat:");
 
         randomButton.setOnAction(event -> {
-            for (int i = 0 ; i < ThreadLocalRandom.current().nextInt(1, 3 + 1) ; i++) {
-                this.cinema.allocateSeat();
-                System.out.println(i);
-            }
+            for (int i = 0 ; i < ThreadLocalRandom.current().nextInt(1, 3 + 1) ; i++) this.cinema.allocateSeat();
         });
 
         setButton.setOnAction(event -> {
@@ -154,7 +154,7 @@ public class GUI {
     private void initBorderPane() {
         borderPane = new BorderPane();
 
-        BackgroundImage backgroundImage= new BackgroundImage(new Image("file:src/main/resources/cinema.png"),
+        BackgroundImage backgroundImage= new BackgroundImage(new Image(RESOURCE_STUB + "cinema.png"),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
         borderPane.setBackground(new Background(backgroundImage));
@@ -214,7 +214,7 @@ public class GUI {
 
         for (List<Seat> row : cinema.getSeats()) {
             for (Seat seat : row) {
-                ImageView imageView = new ImageView(new Image("file:src/main/resources/chair.png"));
+                ImageView imageView = new ImageView(new Image(RESOURCE_STUB + "chair.png"));
                 imageView.setFitHeight(SEAT_ICON_SIZE);
                 imageView.setFitWidth(SEAT_ICON_SIZE);
                 seat.setImageView(imageView);
