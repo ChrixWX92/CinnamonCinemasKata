@@ -1,29 +1,24 @@
 package cinnamoncinemas.cinema;
 
-import cinnamoncinemas.Main;
-import cinnamoncinemas.gui.GUI;
-import cinnamoncinemas.user.User;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Disabled;
 
 import java.util.List;
-import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CinemaTest {
 
     @Test
-    @Disabled // Non-functional since GUI integration
+    @Disabled
+    public // Non-functional since GUI integration
     void generateSeats() {
         Cinema cinema = new Cinema();
         assertEquals(countSeats(cinema.getSeats()), 15);
     }
 
     @Test
-    void rowToIndex() {
+    public void rowToIndex() {
         int counter = 0;
         for (char row = 'A' ; row <= 'C' ; row++) {
             assertEquals(Cinema.rowToIndex(row), counter);

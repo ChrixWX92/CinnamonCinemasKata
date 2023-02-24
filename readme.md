@@ -5,7 +5,7 @@ Interpretation of the Cinnamon Cinemas Movie Theatre Seating Challenge, featurin
 ## Getting Started
 ### Executing program
 
-* Run the project's Main Class via your IDE (no binaries yet). On start, a dummy user account will be created based on system information.
+* Run the project's Main Class via your IDE (no binaries available). On start, a dummy user account will be created based on system information.
 
 ### Functionality
 * Seats can be allocated in the following ways:
