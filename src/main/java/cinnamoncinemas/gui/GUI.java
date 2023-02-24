@@ -130,7 +130,7 @@ public class GUI {
 
         randomButton = new Button("Randomly Allocate 1-3 Seats");
         setButton = new Button("Allocate Set Amount of Seats:");
-        specificButton = new Button("Allocate Specific Seat:");
+        specificButton = new Button("Allocate/Deallocate Specific Seat:");
 
         randomButton.setOnAction(event -> {
             for (int i = 0 ; i < ThreadLocalRandom.current().nextInt(1, 3 + 1) ; i++) this.cinema.allocateSeat();
@@ -142,10 +142,10 @@ public class GUI {
 
         specificButton.setOnAction(event -> {
             if (rowInput.getText().length() > 0 && numberInput.getText().length() > 0){
-                cinema.getSeats().get(
+                Seat seat = cinema.getSeats().get(
                         (cinema.getSeats().size() - 1) - Cinema.rowToIndex(rowInput.getText().toCharArray()[0])).get(
-                        Integer.parseInt(numberInput.getText())-1)
-                        .allocate(Main.currentUser);
+                        Integer.parseInt(numberInput.getText())-1);
+                if (seat.getUser() != null) seat.allocate(Main.currentUser); else seat.deallocate();
                 cinema.checkFull();
             }
         });

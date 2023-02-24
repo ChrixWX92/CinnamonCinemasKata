@@ -36,7 +36,7 @@ public class Seat {
         this.imageView.setImage(ALLOCATED_SEAT);
     }
 
-    private void deallocate() {
+    public void deallocate() {
         this.user = null;
         this.imageView.setImage(VACANT_SEAT);
     }
